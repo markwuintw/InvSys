@@ -1,0 +1,106 @@
+﻿@model Sys.Models.InvTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InvTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InvAccount.Guid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvAccount.Guid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Letter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Letter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImpNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImpNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InpDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InpStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InpStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropReason)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Sys.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>帳號管理</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table data display datatable " >
+    <tr style="background: #8f8f8f url(../img/table/sort_both.png) no-repeat center right;padding: 8px 5px;text-align: left;color: #fff;">
+        <th>
+            @Html.DisplayNameFor(model => model.Account)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Permission)
+        </th>
+        <th>
+            功能
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr style="line-height: 30px;border-bottom: 1px solid #e6e6e6;height: 30px;">
+    <td class="gradeA even">
+        @Html.DisplayFor(modelItem => item.Account)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>*@
+    <td class="gradeA odd">
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td class="gradeA even">
+        <img src="/UpFiles/@item.Image" style="width: 100px; height: 100px; object-fit: cover;" />
+    </td>
+    <td class="gradeA odd">
+        @Html.DisplayFor(modelItem => item.Gender)
+    </td>
+    <td class="gradeA even">
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td class="gradeA odd">
+        @Html.DisplayFor(modelItem => item.JobTitle)
+    </td>
+    <td class="gradeA even">
+        @Html.DisplayFor(modelItem => item.Permission)
+    </td>
+    <td class="gradeA odd">
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
+    }
+
+</table>

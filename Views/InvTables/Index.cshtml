@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Sys.Models.InvTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InvAccount.Guid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Letter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImpNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InpDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InpStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DropTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DropReason)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvAccount.Guid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InitDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Letter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InpDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InpStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DropTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DropReason)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
