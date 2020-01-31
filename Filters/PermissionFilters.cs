@@ -32,56 +32,57 @@ namespace Sys.Filters
 
             StringBuilder stringBuilder = new StringBuilder();
 
+            filterContext.Controller.ViewBag.menu += @"<li><a class=""menuitem"" >國際縱火調查人員協會</a><ul class=""submenu"">";
+
             if (member.Permission.Contains("帳號管理"))
             {
-                filterContext.Controller.ViewBag.menu += @"<li><a class=""menuitem"" >管理功能</a><ul class=""submenu""><li><a href = ""/admin/Login/Index"" >帳號管理</a></li></li><li><a href = ""/admin/Login/Role"" >角色管理</a></li></ul></li>";
+                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/Login/Index"" >帳號管理</a></li>";
+                //filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/Login/Role"" >角色管理</a></li>";
             }
 
             if (member.Permission.Contains("網站內容管理"))
             {
-                filterContext.Controller.ViewBag.menu += @"<li><a class=""menuitem"" >國際縱火調查人員協會</a><ul class=""submenu"">";
                 filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/WebArticles/Index"" > 網站內容管理 </a></li>";
             }
 
             if (member.Permission.Contains("最新消息管理"))
             {
-                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/Views/Login/Index.cshtml"" > 最新消息管理 </a></li>";
-
+                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/News/Index"" > 最新消息管理 </a></li>";
             }
 
             if (member.Permission.Contains("相關連結管理"))
             {
-                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/Views/Login/Index.cshtml"" > 相關連結管理 </a></li>";
+                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/AboutLinks/Index"" > 相關連結管理 </a></li>";
 
             }
 
             if (member.Permission.Contains("首頁圖片管理"))
             {
-                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/Views/Login/Index.cshtml"" > 首頁圖片管理 </a></li>";
+                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/Banners/Index"" > 首頁圖片管理 </a></li>";
 
             }
 
             if (member.Permission.Contains("聯絡我們管理"))
             {
-                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/Views/Login/Index.cshtml"" > 聯絡我們管理 </a></li>";
+                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/ContactUS/Index"" > 聯絡我們管理 </a></li>";
 
             }
 
             if (member.Permission.Contains("討論區管理"))
             {
-                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/Views/Login/Index.cshtml"" > 討論區管理 </a></li>";
+                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/Downloads/Index"" > 討論區管理 </a></li>";
 
             }
 
             if (member.Permission.Contains("知識庫管理"))
             {
-                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/Views/Login/Index.cshtml"" > 知識庫管理 </a></li>";
+                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/Knowledges/Index"" > 知識庫管理 </a></li>";
 
             }
 
             if (member.Permission.Contains("專家介紹管理"))
             {
-                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/Views/Login/Index.cshtml"" > 專家介紹管理 </a></li>";
+                filterContext.Controller.ViewBag.menu += @"<li><a href = ""/admin/Experts/Index"" > 專家介紹管理 </a></li>";
 
             }
 

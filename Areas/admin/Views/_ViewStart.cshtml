@@ -1,12 +1,4 @@
-﻿@{
-    string ControllerName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
-    switch (ControllerName)
-    {
-        case "Login":
-            Layout = "~/Areas/Admin/Views/Shared/_login.cshtml";
-            break;
-        default:
-            Layout = "~/Areas/Admin/Views/Shared/_login.cshtml";
-            break;
-    }
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Login.cshtml";
 }

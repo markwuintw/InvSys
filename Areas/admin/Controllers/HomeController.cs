@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Newtonsoft.Json;
+using Sys.Filters;
 using Sys.Models;
 
 namespace Sys.Areas.admin.Controllers
@@ -42,9 +43,10 @@ namespace Sys.Areas.admin.Controllers
             }
             string userData = JsonConvert.SerializeObject(member);
             SetAuthenTicket(userData, member.Account);
+
             //User.Identity.Name 可呼叫上行
             //return RedirectToAction("Index");
-            return RedirectToAction("Index","Login",  new { Area = "admin"});
+            return RedirectToAction("Index","Home",  new { Area = "admin"});
 
         }
 
@@ -67,10 +69,12 @@ namespace Sys.Areas.admin.Controllers
             return RedirectToAction("Login", "Home");
         }
 
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        [PermissionFilters]
+        [Authorize]
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         //public ActionResult About()
         //{

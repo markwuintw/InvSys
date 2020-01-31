@@ -1,0 +1,73 @@
+﻿@*@model IEnumerable<Sys.Models.Download>*@
+@model MvcPaging.IPagedList<Sys.Models.Download>
+@using MvcPaging
+@using Sys.Models
+
+@{
+    ViewBag.Title = "討論區管理列表";
+}
+
+<h2>討論區管理列表</h2>
+
+@using (Html.BeginForm()) //nullnull送給自己，form-data才可上傳檔案
+{
+    <div class="form-group">
+        <label for="SearchItem">標題：</label><input name="SearchItem" type="text" placeholder="請輸入關鍵字"><br>
+        <label for="PublishDate">發布日期：</label><input name="SDate" type="date"><span>~</span><input name="EDate" type="date">
+        <input type="submit" value="送出">
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table data display datatable ">
+    <tr style="background: #8f8f8f url(../img/table/sort_both.png) no-repeat center right;padding: 8px 5px;text-align: left;color: #fff;">
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Item)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().viewers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().publishUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().publishDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().InitDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.viewers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publishUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InitDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pager">
+    @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount)
+</div>

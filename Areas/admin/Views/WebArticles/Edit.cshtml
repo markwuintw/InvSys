@@ -1,20 +1,29 @@
-﻿@model Sys.Models.WebArticle
+﻿@using Sys.Models
+@model Sys.Models.WebArticle
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "網站內容管理-編輯";
 }
 
-<h2>Edit</h2>
+<h2>網站內容管理-編輯</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>WebArticle</h4>
+        @*<h4>網站內容管理編輯</h4>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model=> model.viewers)
+        @Html.HiddenFor(model=> model.InitDate)
+        @Html.HiddenFor(model=> model.UpdateUser)
+        @Html.HiddenFor(model=> model.publishDate)
+        @Html.HiddenFor(model=> model.publishUser)
+
+
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Article, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -25,53 +34,80 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.viewers, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.viewers, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.viewers, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Content, new { id = "editor1", rows = "10", cols = "80" })
+                @*@Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                @*<textarea name="editor1" id="editor1" runat="server" clientidmode="Static" htmlEscape="false"></textarea>*@
+
             </div>
+            <script>
+                //$(document).ready(function () {
+                //    CKEDITOR.replace('editor1');
+                //})
+                CKEDITOR.replace('editor1', {
+                //    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+                    filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?type=Images',
+                //    filebrowserFlashBrowseUrl: '/ckfinder/ckfinder.html?type=Flash',
+                //    filebrowserUploadUrl: '/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files',
+                    filebrowserImageUploadUrl: '/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images',
+                //    filebrowserFlashUploadUrl: '/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
+                });
+            </script>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.publishUser, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.publishUser, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.publishUser, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.viewers, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.viewers, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.viewers, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.publishDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.publishDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.publishDate, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.publishUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.publishUser, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.publishUser, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UpdateUser, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UpdateUser, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UpdateUser, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.publishDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.publishDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.publishDate, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InitDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InitDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InitDate, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.UpdateUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UpdateUser, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UpdateUser, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.InitDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.InitDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.InitDate, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="更新" class="btn btn-default" />
+                <input type="button" value="回上一頁" onclick="location.href='/admin/WebArticles/Index/Index'" class="btn btn-default" />
             </div>
+
         </div>
+
     </div>
 }
-
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
+

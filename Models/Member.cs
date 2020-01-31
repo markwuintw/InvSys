@@ -67,12 +67,140 @@ namespace Sys.Models
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")] //HTML 日曆只吃yyyy-MM-dd格式
         [Display(Name = "建立日期")] //顯示的名稱，但在DB及程式碼仍用英文
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         //該Computed選項指定屬性值將在首次保存時由數據庫生成，並在每次更新值時重新生成。這樣做的實際效果是，實體框架不會在INSERT或UPDATE語句中包括該屬性，而是在檢索時從數據庫中獲取計算值。
         //需 using System.ComponentModel.DataAnnotations.Schema，但 EF5 Code First 並不支援設定預設值，而此舉的意義為讓 EF 不再追蹤此屬性的任何物件變化
         public DateTime? InitDate { get; set; } //資料庫要同步改為非必填
 
 
         // [NotMapped] 不在資料庫產生對應欄位，需 using System.ComponentModel.DataAnnotations.Schema
+
+
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [Display(Name = "生日")] //顯示的名稱，但在DB及程式碼仍用英文
+        public DateTime? BirthDate { get; set; } //資料庫要同步改為非必填
+
+        [Display(Name = "申請類別")] //顯示的名稱，但在DB及程式碼仍用英文
+        public ApplicationType ApplicationType { get; set; } //資料庫要同步改為非必填
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "手機")] //顯示的名稱，但在DB及程式碼仍用英文
+        public string CellPhoneNumber { get; set; }
+
+        [Display(Name = "地址")] //顯示的名稱，但在DB及程式碼仍用英文
+        public string Address { get; set; }
+
+
+        [Display(Name = "國際會籍")] //顯示的名稱，但在DB及程式碼仍用英文
+        public BooleanType InternationalMembership { get; set; }
+
+        [Display(Name = "國際會籍會員證影本 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public String InternationalMembershipFile { get; set; }
+
+        [Display(Name = "現職單位 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public String Company { get; set; }
+
+        [Display(Name = "最高學歷 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public String HighEducation { get; set; }
+
+
+
+        [Display(Name = "經歷單位1 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public String ExpCom1 { get; set; }
+
+
+        [Display(Name = "經歷職稱1 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public String ExpJob1 { get; set; }
+
+
+        [Display(Name = "經歷起年1 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpSDY1 { get; set; }
+
+
+        [Display(Name = "經歷起月1 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpSDM1 { get; set; }
+
+        [Display(Name = "經歷迄年1 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpEDY1 { get; set; }
+
+
+        [Display(Name = "經歷迄月1 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpEDM1 { get; set; }
+
+
+
+
+
+
+
+
+        [Display(Name = "經歷單位2 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public String ExpCom2 { get; set; }
+
+
+        [Display(Name = "經歷職稱2 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public String ExpJob2 { get; set; }
+
+
+        [Display(Name = "經歷起年2 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpSDY2 { get; set; }
+
+
+        [Display(Name = "經歷起月2 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpSDM2 { get; set; }
+
+        [Display(Name = "經歷迄年2 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpEDY2 { get; set; }
+
+
+        [Display(Name = "經歷迄月2 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpEDM2 { get; set; }
+
+
+
+
+
+
+
+
+
+        [Display(Name = "經歷單位3 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public String ExpCom3 { get; set; }
+
+
+        [Display(Name = "經歷職稱3 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public String ExpJob3 { get; set; }
+
+
+        [Display(Name = "經歷起年3 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpSDY3 { get; set; }
+
+
+        [Display(Name = "經歷起月3 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpSDM3 { get; set; }
+
+        [Display(Name = "經歷迄年3 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpEDY3 { get; set; }
+
+
+        [Display(Name = "經歷迄月3 ")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? ExpEDM3 { get; set; }
+
+
+
+
+
+
+
+
+        [Display(Name = "相關年資合計年")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? TotalJobYear { get; set; }
+
+
+        [Display(Name = "相關年資合計月")] //顯示的名稱，但在DB及程式碼仍用英文
+        public int? TotalJobMonth { get; set; }
+
+
     }
 }

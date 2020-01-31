@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using BotDetect.Web.Mvc;
+using Newtonsoft.Json;
 using Sys.Models;
 
 namespace Sys.Controllers
@@ -15,10 +18,29 @@ namespace Sys.Controllers
         private SysContext db = new SysContext();
 
         // GET: Contact
-        //public ActionResult Index()
-        //{
-        //    return View(db.ContactViewModels.ToList());
-        //}
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [CaptchaValidation("CaptchaCode", "ExampleCaptcha", "Incorrect Captcha Code!")]
+        [HttpPost]
+        public ActionResult Index([Bind(Include = "Id,Item,Content,Name,Gender,Email,Tel,PublishDate,UpdateUser,UpdateDate,InitDate")]ContactUS contactUS,bool captchaValid)
+        {
+            if (ModelState.IsValid)
+            {
+
+                contactUS.publishDate = DateTime.UtcNow.AddHours(8);
+                contactUS.InitDate = DateTime.UtcNow.AddHours(8);
+
+                db.ContactUS.Add(contactUS);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+
+            return View();
+        }
 
         //// GET: Contact/Details/5
         //public ActionResult Details(int? id)

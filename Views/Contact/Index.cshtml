@@ -1,0 +1,159 @@
+﻿@model Sys.Models.ContactUS
+
+@using BotDetect.Web.Mvc;
+
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
+
+<div id="banner-area" class="banner-area" style="background-image:url(/images/banner-bg.jpg)">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>聯絡我們</li>
+                        <li><a href="#"> 聯絡我們</a></li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>聯絡我們</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li class="active"><a href="#">聯絡我們</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories end -->
+
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">聯絡我們</h2>
+                <hr class="botmargin-min">
+                <!-- 內容開始 -->
+
+                @using (Html.BeginForm(new { @class = "form-horizontal" }))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.Gender, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Tel, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Item, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Item, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">驗證碼：</label>
+                        <div class="col-sm-3">
+                            @{
+                                MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha");
+                                exampleCaptcha.CodeLength = 4;
+                            }
+                            @Html.TextBox("CaptchaCode", null, new
+                            {
+                                placeholder = "請輸入驗證碼", @class = "form-control"})
+
+                            @*<input class="form-control" data-val="true" data-val-required="驗證碼必填" id="MvcCaptcha" name="MvcCaptcha" placeholder="請輸入驗證碼" type="text" value="" />*@
+                        </div>
+                        <div class="col-sm-4">
+
+                            @Html.Captcha(exampleCaptcha)
+                            @*@Html.TextBox("CaptchaCode", null, new {placeholder = "請輸入驗證碼"})*@
+
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="field-validation-valid" data-valmsg-for="MvcCaptcha" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button class="btn btn-primary solid blank" type="submit">送 出</button>
+                        </div>
+                    </div>
+                }
+
+
+
+
+
+                <!-- Content row 1 end -->
+                <!-- 內容結束 -->
+
+                <div class="tags-area clearfix">
+
+                    <div class="share-items pull-right" style="display: none">
+                        <ul class="post-social-icons unstyled">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- Content Col end -->
+
+
+        </div><!-- Main row end -->
+
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->

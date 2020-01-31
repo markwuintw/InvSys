@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using MvcPaging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq; // 欲使用 JObject
 using Sys.Filters;
@@ -26,11 +27,26 @@ namespace Sys.Areas.admin.Controllers
         private SysContext db = new SysContext();
 
         // GET: Login
-        public ActionResult Index()
-        {
-            return View(db.Members.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    return View(db.Members.ToList());
+        //}
 
+        private const int DefaultPageSize = 10;  //每分頁10個
+
+        public ActionResult Index(int? page)
+        {
+            if (!page.HasValue) //因為第一頁不回傳，第二頁回傳2，但系統判斷是從0開始。
+            {
+                page = 0;
+            }
+            else
+            {
+                page--;  //page = page - 1
+            }
+            var Member = db.Members;
+            return View(Member.ToList().ToPagedList((int)page, DefaultPageSize));
+        }
 
         // GET: Login/Details/5
         public ActionResult Details(int? id)

@@ -1,0 +1,114 @@
+﻿@*@model IEnumerable<Sys.Models.ContactUS>*@
+@model MvcPaging.IPagedList<Sys.Models.ContactUS>
+@using MvcPaging
+@using Sys.Models
+
+@{
+    ViewBag.Title = "聯絡我們管理列表";
+}
+
+<h2>聯絡我們管理列表</h2>
+
+@using (Html.BeginForm()) //nullnull送給自己，form-data才可上傳檔案
+{
+    <div class="form-group">
+        <label for="SearchItem">名稱：</label><input name="SearchItem" type="text" placeholder="請輸入關鍵字">
+        <label for="SearchName">姓名：</label><input name="SearchName" type="text" placeholder="請輸入關鍵字">
+        <label for="SearchGender">性別：</label>@Html.DropDownList("SearchGender", new SelectList(Enum.GetValues(typeof(GenderType))), "請選擇")
+        <br />
+        <label for="PublishDate">日期：</label><input name="SDate" type="date"><span>~</span><input name="EDate" type="date">
+        <br />
+        <input type="submit" value="送出">
+    </div>
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table data display datatable ">
+    <tr style="background: #8f8f8f url(../img/table/sort_both.png) no-repeat center right;padding: 8px 5px;text-align: left;color: #fff;">
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Item)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Content)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Tel)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().publishUser)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().publishDate)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().UpdateUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().UpdateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().InitDate)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tel)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.publishUser)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.publishDate)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.UpdateUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InitDate)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pager">
+    @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount)
+</div>

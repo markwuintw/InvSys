@@ -72,4 +72,15 @@ namespace Sys.Models
         [System.ComponentModel.Description("11-12")]
         十一十二月,
     }
+
+    public enum ApplicationType //原 public class EnumList
+    {
+        正式會員,
+        準會員,
+        個人贊助會員,
+        學生會員
+    }
+
+
+
 }

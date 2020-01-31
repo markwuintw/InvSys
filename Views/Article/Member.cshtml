@@ -1,0 +1,233 @@
+﻿@model Sys.Models.WebArticle
+
+@{
+    ViewBag.Title = "Member";
+}
+
+<div id="banner-area" class="banner-area" style="background-image:url(/images/banner-bg.jpg)">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>關於我們</li>
+                        <li><a href="#">配證會員</a></li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>關於我們</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li><a href="/Article/About">關於我們</a></li>
+                            <li><a href="/Article/Organization">組織架構</a></li>
+                            <li><a href="/Article/history">沿革</a></li>
+                            <li class="active"><a href="/Article/Member">配證會員</a></li>
+                            <li><a href="/Expert">專家介紹</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories end -->
+
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">配證會員</h2>
+                <hr class="botmargin-min">
+                <!-- 內容開始 -->
+
+
+                @Html.Raw(WebUtility.HtmlDecode(Model.Content)) @* @Html.Raw, 表示要不編碼直接輸出 *@
+
+
+
+                @*<p><span style="color:#FFA500;"><span style="font-size:18px;"><span style="font-size:22px;"><a id="國際會員" name="國際會員"></a>國際會員</span></span></span></p>
+
+                    <table border="1" cellpadding="1" cellspacing="1" style="width:700px;">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">Picture</span></th>
+                                <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">First name</span></th>
+                                <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">Last name</span></th>
+                                <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">country</span></th>
+                                <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">Title</span></th>
+                                <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">Company</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/james.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">James(Jim)</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Kanavy</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Assistant Fire Chief/Fire Investigator</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">SCOH County Fire Dept</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/joanna.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Joanna</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Lambert</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Special Agent Certified Fire Investigator</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">ATF</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/dawn.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Dawn</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Dodsworth</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Special Agent</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">ATF</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/william.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">William Bumper</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Moylan</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Fire and Explosion Investigator</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">S-E-A Liminted</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/jonathon.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Jonathon</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Jones</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Deputy State Fire Marshal</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Oregon State Police OSFM</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/shon.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Shon</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Saucedo</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Fire Investigator/Bomb technician</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Las Vegas Fire and Rescue</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/IMG_20160428_223840(1).jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Corey</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Cunningham</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Fire Analysis Specialist</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Cunningham Investigative Services</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/170222.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Gary</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Hodson</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Senior Investigator</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Unified <span style="line-height: 20.8px; text-align: center;">Investigations &amp; Sciences. Inc</span></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/170231.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Michael A.</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Schlatman</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Past President</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">IAAI-CFI,IAAI-CI</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/170234.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Laurel V.</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Mason</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Prencipal/Laboratory Director</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Analytical Forensic Associates</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/170237.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">K David</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Cheers</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">USA</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Senior Fire Consultant Field Operations Manager</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Jack Ward Fire Consultants. LLC.</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/S__13705239.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Dirk&nbsp;</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Hedglin</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><span style="text-align: center;">USA</span></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Forensic Chemist</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Great Lakes Analytical Inc</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/JimK-270x250.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Jim&nbsp;</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><span style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, &quot;Trebuchet MS&quot;; font-size: 13px; text-align: center; background-color: rgb(255, 255, 255);">Kuticka</span></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><span style="text-align: center;">USA</span></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Owner/Investigator /IAAI Director</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Kuticka Fire Investigations</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/S__13705236.jpg" style="width: 200px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Darryl D</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Sanders</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><span style="text-align: center;">USA</span></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Police officer Baton Rouge Fire Department / IAAI Director</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">Police officer Baton Rouge Fire Department&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="/upfiles/images/R_%20Kirk%20Hankins.jpg" style="width: 145px; height: 200px;" /></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">R.Kirk</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">&nbsp;Hanky</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);"><span style="text-align: center;">USA</span></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">SR&nbsp;<span style="text-align: center;">Investigator</span></td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">FIRE CONSULTING INTERNATIONAL, INC.</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">&nbsp;</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">&nbsp;</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">&nbsp;</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">&nbsp;</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">&nbsp;</td>
+                                <td style="text-align: center; border-color: rgb(204, 0, 0);">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>&nbsp;</p>
+
+                    <p><span style="font-size:18px;">&nbsp;</span></p>*@
+
+
+
+                <!-- Content row 1 end -->
+                <!-- 內容結束 -->
+
+                <div class="tags-area clearfix">
+
+                    <div class="share-items pull-right" style="display: none">
+                        <ul class="post-social-icons unstyled">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- Content Col end -->
+
+
+        </div><!-- Main row end -->
+
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->

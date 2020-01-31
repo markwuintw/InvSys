@@ -1,40 +1,42 @@
-﻿@model IEnumerable<Sys.Models.Member>
+﻿@*@model IEnumerable<Sys.Models.Member>*@
+@model MvcPaging.IPagedList<Sys.Models.Member>
+@using MvcPaging
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "帳號管理列表";
 }
 
-<h2>帳號管理</h2>
+<h2>帳號管理列表</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table data display datatable " >
+<table class="table data display datatable ">
     <tr style="background: #8f8f8f url(../img/table/sort_both.png) no-repeat center right;padding: 8px 5px;text-align: left;color: #fff;">
         <th>
-            @Html.DisplayNameFor(model => model.Account)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Account)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Password)
+                @Html.DisplayNameFor(model => model.Password)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().JobTitle)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Permission)
         </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.JobTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Permission)
-        </th>
         <th>
             功能
         </th>
@@ -42,37 +44,41 @@
 
     @foreach (var item in Model)
     {
-<tr style="line-height: 30px;border-bottom: 1px solid #e6e6e6;height: 30px;">
-    <td class="gradeA even">
-        @Html.DisplayFor(modelItem => item.Account)
-    </td>
-    @*<td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>*@
-    <td class="gradeA odd">
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td class="gradeA even">
-        <img src="/UpFiles/@item.Image" style="width: 100px; height: 100px; object-fit: cover;" />
-    </td>
-    <td class="gradeA odd">
-        @Html.DisplayFor(modelItem => item.Gender)
-    </td>
-    <td class="gradeA even">
-        @Html.DisplayFor(modelItem => item.Email)
-    </td>
-    <td class="gradeA odd">
-        @Html.DisplayFor(modelItem => item.JobTitle)
-    </td>
-    <td class="gradeA even">
-        @Html.DisplayFor(modelItem => item.Permission)
-    </td>
-    <td class="gradeA odd">
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
+        <tr style="line-height: 30px;border-bottom: 1px solid #e6e6e6;height: 30px;">
+            <td class="gradeA even">
+                @Html.DisplayFor(modelItem => item.Account)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>*@
+            <td class="gradeA odd">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="gradeA even">
+                <img src="/UpFiles/@item.Image" style="width: 100px; height: 100px; object-fit: cover;" />
+            </td>
+            <td class="gradeA odd">
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td class="gradeA even">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="gradeA odd">
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            @*<td class="gradeA even">
+                @Html.DisplayFor(modelItem => item.Permission)
+            </td>*@
+            <td class="gradeA odd">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
     }
 
+
 </table>
+<div class="pager">
+    @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount)
+</div>

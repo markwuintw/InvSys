@@ -1,0 +1,104 @@
+﻿@model Sys.Models.Member
+
+<div id="banner-area" class="banner-area" style="background-image:url(/images/banner-bg.jpg)">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>會員專區</li>
+                        <li><a href="#"> 會員登入</a></li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>會員專區</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li class="active"><a href="#">會員登入</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories end -->
+
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">會員登入</h2>
+                <hr class="botmargin-min">
+                <!-- 內容開始 -->
+
+
+                <form action="/Member/Login" class="form-horizontal" method="post">
+                    <input name="__RequestVerificationToken" type="hidden" value="OXBQ2cKMP01WnyOuKLjM9PbiDwpMcKfQTVqL3_ed0JuTLcNj6KdZIu4K3lrrYRVHwd42MunDwd8OO9llqDWvDpYU_1sTlGE5TkJRgydq9zs1" />                        
+                    <h3 class="title-normal">請輸入您的帳號及密碼</h3>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">帳　號：</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" placeholder="請輸入帳號" name="account">
+
+                        </div>
+                        <div class="col-sm-2">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">密　碼：</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" placeholder="請輸入密碼" name="password" type="password">
+                        </div>
+                        <div class="col-sm-2">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button class="btn btn-primary solid blank" type="submit">登 入</button>
+                            <span style="color:red">@ViewBag.Message</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-left">
+                        <a href="/Member/Register">尚未註冊</a>
+                    </div>
+                </form>
+
+                <!-- Content row 1 end -->
+                <!-- 內容結束 -->
+
+                <div class="tags-area clearfix">
+
+                    <div class="share-items pull-right" style="display: none">
+                        <ul class="post-social-icons unstyled">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- Content Col end -->
+
+
+        </div><!-- Main row end -->
+
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->

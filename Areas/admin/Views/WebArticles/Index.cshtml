@@ -6,13 +6,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>網站內容管理列表</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+@*@Html.ActionLink("Create New", "Create")*@
 </p>
-<table class="table">
-    <tr>
+<table class="table data display datatable ">
+    <tr style="background: #8f8f8f url(../img/table/sort_both.png) no-repeat center right;padding: 8px 5px;text-align: left;color: #fff;">
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Article)
         </th>
@@ -58,9 +58,9 @@
                 @*@Html.DisplayFor(modelItem => item.InitDate)*@
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
             </td>
         </tr>
     }

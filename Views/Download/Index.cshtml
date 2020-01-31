@@ -1,0 +1,130 @@
+﻿@using Sys.Models
+@model MvcPaging.IPagedList<Sys.Models.Download>
+@using MvcPaging
+
+@{
+    ViewBag.Title = "Index";
+
+    IQueryable<Download> downloads = ViewBag.downloads;
+}
+
+<div id="banner-area" class="banner-area" style="background-image:url(/images/banner-bg.jpg)">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>會員專區</li>
+                        <li><a href="#"> 討論區</a></li>
+
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>會員專區</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li class="active"><a href="/Download/Create">討論區</a></li>
+                            <li><a href="/Member/Edit">修改個人資料</a></li>
+                            <li><a href="/Member/LogOff">登出</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories end -->
+
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">討論區</h2>
+                <hr class="botmargin-min">
+                <!-- 內容開始 -->
+
+
+                <style>
+                    .respon {
+                        margin: 20px auto;
+                        display: inline-block;
+                        padding: 3px 8px;
+                        background: #b2b2b2;
+                        color: white;
+                        border-radius: 2px;
+                    }
+                </style>
+                <a class="respon" href="/Download/Create">張貼文章</a>
+                <table class="table table-striped career-table download-table">
+
+                    <thead>
+                        <tr>
+
+                            <th><span class="text-left">標題</span></th>
+                            <th>發表人</th>
+                            <th>最新回覆人</th>
+                            <th>回覆數</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+
+                                <td><span class="text-left"><a href="/Download/Details/@item.Id">@item.Item</a></span></td>
+                                <td>@item.publishUser <br />@Convert.ToDateTime(item.publishDate).ToString("yyyy-MM-dd")</td>
+                                <td>
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+                <div class="paging text-center">
+                    <div class="pagination">
+
+                        <span class="disabled">«</span><span class="current">1</span><span class="disabled">»</span>
+                    </div>
+                </div>
+
+
+                <!-- Content row 1 end -->
+                <!-- 內容結束 -->
+
+                <div class="tags-area clearfix">
+
+                    <div class="share-items pull-right" style="display: none">
+                        <ul class="post-social-icons unstyled">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- Content Col end -->
+
+
+        </div><!-- Main row end -->
+
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->

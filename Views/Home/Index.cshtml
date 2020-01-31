@@ -1,0 +1,164 @@
+﻿@using Sys.Models
+@model IEnumerable<Sys.Models.Banner>
+
+@{
+    ViewBag.Title = "Index";
+    //var bannerPhotos = ViewBag.indexphoto;
+    List<Banner> bannerPhotos = ViewBag.indexphoto;
+
+    IQueryable<News> news = ViewBag.news;
+    IQueryable<AboutLink> AboutLinks = ViewBag.AboutLinks;
+
+
+}
+
+<!-- Carousel -->
+<div id="main-slide" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators visible-lg visible-md">
+        <li data-target="#main-slide" data-slide-to="0" class="active"></li>
+        <li data-target="#main-slide" data-slide-to="1"></li>
+    </ol><!--/ Indicators end-->
+    <!-- Carousel inner -->
+    <div class=“carousel-inner”>
+
+        @foreach (var item in bannerPhotos)
+        {
+            string action = "active";
+
+            if (bannerPhotos.IndexOf(item) != 0)
+            {
+                action = "";
+                @:<!--/ Carousel item end -->
+            }
+
+            <div class="item @action" style="background-image: url(/UpFiles/@item.Photo)">
+
+            </div>
+
+        }
+
+    </div>
+    <!-- Controllers -->
+    <a class="left carousel-control" href="#main-slide" data-slide="prev">
+        <span><i class="fa fa-angle-left"></i></span>
+    </a>
+    <a class="right carousel-control" href="#main-slide" data-slide="next">
+        <span><i class="fa fa-angle-right"></i></span>
+    </a>
+
+    <span class="down-arrow-transparent"></span>
+
+</div><!--/ Carousel end -->
+
+
+
+
+<section id="news" class="news">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var item in news.Take(4))
+            {
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="latest-post">
+                        <img class="img-responsive" src="/UpFiles/@item.Photo" alt="img">
+                        <div class="post-body">
+                            <h4 class="post-title">
+                                <a href="/news/Details/25">@item.NewsItem</a>
+                            </h4>
+                            <span class="post-item-date">
+                                <i class="fa fa-clock-o"></i> @item.publishDate
+                            </span>
+                            <div class="post-text">
+                                <p>
+                                    @item.Introduction
+                                </p>
+                            </div>
+                        </div>
+                        <a href="/news/Details/25" class="btn btn-primary">More</a>
+                    </div><!-- Latest post end -->
+                </div><!-- 1st post col end -->
+            }
+
+
+        </div><!--/ Content row end -->
+    </div><!--/ Container end -->
+</section><!--/ News end -->
+
+<section id="facts" class="facts no-padding">
+    <div class="fact-img">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12 fact-text">
+                    <ol>
+                        <li>從事火災調查之科技與學術研究，提昇我國火災調查科技研究水準，並落實研究成果。</li>
+                        <li>舉辦相關學術研討會及活動，提供技術資訊與發展之交流平台，參與並推動火災調查、預防及研究等之國內外交流活動。</li>
+                        <li>發行及出版火災調查、預防及研究等相關科技研究之學術刊物、書籍及媒體等。</li>
+                        <li>從事火災原因研究、危險因子診斷及災害預防等技術與系統之研發、相關資料庫之建立、及推廣和教育。</li>
+                        <li>提昇火災預防及調查專業人員之技術，並輔導會員取得國際證照。</li>
+                        <li>維護會員合法權益、端正會員職業道德與倫理、促進會員間之合作。</li>
+                        <li>關懷社會並維護社會公理正義。</li>
+                    </ol>
+                </div><!-- Col end -->
+            </div><!--/ Content row end -->
+        </div><!--/ Container end -->
+    </div><!--/ Container end -->
+</section><!-- Facts end -->
+<section id="news" class="news">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="latest-post">
+                    <img class="img-responsive" src="/images/part2_menu_1.jpg" alt="img">
+                </div><!-- Latest post end -->
+            </div><!-- 1st post col end -->
+
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="latest-post">
+                    <img class="img-responsive" src="/images/part2_menu_2.jpg" alt="img">
+                </div><!-- Latest post end -->
+            </div><!-- 2nd post col end -->
+
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="latest-post">
+                    <img class="img-responsive" src="/images/part2_menu_3.jpg" alt="img">
+                </div><!-- Latest post end -->
+            </div><!-- 3rd post col end -->
+
+        </div><!--/ Content row end -->
+    </div><!--/ Container end -->
+</section><!--/ News end -->
+
+<section id="graybg" class="graybg">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <img class="img-responsive" src="/images/part3.jpg" alt="img">
+            </div><!-- Col end -->
+        </div><!--/ Content row end -->
+    </div><!--/ Container end -->
+
+</section><!-- graybg end -->
+<!-- Partners start -->
+<section id="partners-area" class="partners-area">
+    <div class="container">
+
+        <div class="row">
+            <div id="partners-carousel" class="col-sm-12 owl-carousel owl-theme text-center partners">
+
+                @foreach (var item in AboutLinks)
+                    {
+                        <figure class="item partner-logo">
+                            <a href="@item.LinkURL" target="_blank">
+                                <img class="img-responsive" src="/UpFiles/@item.Photo" style="height: 70px; width:210px" alt="client">
+                            </a>
+                        </figure>
+                    }
+                </div><!--/ Owl carousel end -->
+
+        </div><!--/ Content row end -->
+    </div><!--/ Container end -->
+</section><!--/ Partners end -->

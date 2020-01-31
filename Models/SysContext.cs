@@ -27,7 +27,17 @@
         public virtual DbSet<InvLetter> InvLetters { get; set; } //加入DbContext
         public virtual DbSet<InvTable> InvTables { get; set; } //加入DbContext
         public virtual DbSet<InvItem> InvItems { get; set; } //加入DbContext
+
+
         public virtual DbSet<WebArticle> WebArticles { get; set; } //加入DbContext
+        public virtual DbSet<News> News { get; set; } //加入DbContext
+        public virtual DbSet<AboutLink> AboutLinks { get; set; } //加入DbContext
+        public virtual DbSet<Banner> Banners { get; set; } //加入DbContext
+        public virtual DbSet<ContactUS> ContactUS { get; set; } //加入DbContext
+        public virtual DbSet<Download> Downloads { get; set; } //加入DbContext
+        public virtual DbSet<Knowledge> Knowledges { get; set; } //加入DbContext
+        public virtual DbSet<Expert> Experts { get; set; } //加入DbContext
+
 
 
         //public virtual DbSet<ContactViewModel> ContactViewModels { get; set; } //加入DbContext

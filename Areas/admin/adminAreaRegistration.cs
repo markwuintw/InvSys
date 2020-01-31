@@ -17,7 +17,10 @@ namespace Sys.Areas.admin
             context.MapRoute(
                 "admin_default",
                 "admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { Controller = "Home" ,action = "Index", id = UrlParameter.Optional }
+                //,namespaces: new string[] { "Sys.Area.admin.Controllers" }
+
+
             );
         }
     }

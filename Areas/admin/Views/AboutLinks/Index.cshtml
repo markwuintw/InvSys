@@ -1,0 +1,172 @@
+﻿@*@model IEnumerable<Sys.Models.AboutLink>*@
+@model MvcPaging.IPagedList<Sys.Models.AboutLink>
+@using MvcPaging
+@using Sys.Models
+
+@{
+    ViewBag.Title = "相關連結管理列表";
+}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Initialise the table
+            $("#table-1").tableDnD();
+        });
+    </script>
+
+<h2>相關連結管理列表</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table data display datatable" id="table-1" cellspacing="0" cellpadding="2">
+    <tr style="background: #8f8f8f url(../img/table/sort_both.png) no-repeat center right;padding: 8px 5px;text-align: left;color: #fff;">
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Item)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().LinkURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().OnSite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().order)
+        </th>
+        <th>
+            新排序
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().publishDate)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().InitDate)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Photo)*@
+                <img src="/UpFiles/@item.Photo" style="width: 100px; height: 100px; align-content: center;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item)
+            </td>
+
+            <td>
+                @*@Html.DisplayFor(modelItem => item.LinkURL)*@
+                <a href="@item.LinkURL">@item.LinkURL</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnSite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.order)
+            </td>
+
+            <td>
+                @Html.TextBoxFor(modelItem => item.order, new { @class = "position" })
+            </td>
+
+            @*todo 拖曳順序*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.order)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.publishDate)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.InitDate)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+
+                @Html.Hidden("ID", item.Id)
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+@using (Html.BeginForm("Sort", null))
+
+{
+
+    <div>
+
+        <input type="hidden" id="sortData" name="sortData" />
+
+        <input type="submit" value="更新排序" />
+
+    </div>
+
+}
+
+<div class="pager">
+    @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount)
+</div>
+@* todo 更新排序 *@
+@*<div class="pager">
+        @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount)
+    </div>*@
+
+@{
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    <script src="/js/jquery.tablednd.0.5.js" type="text/javascript"></script>
+
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("table").tableDnD({
+
+                onDragClass: "showDragHandle",
+
+                onDrop: function (table, row) {
+
+                    var rows = table.tBodies[0].rows;
+
+                    var map = "";
+
+                    for (var i = 1; i < rows.length; i++) {
+
+                        $(rows[i]).find(".position").val(i);
+
+                        map += $(rows[i]).find("#ID").val() + ":" + i + ",";
+
+                    }
+
+                    $("#sortData").val(map);
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+    <style>
+
+        .position {
+            width: 27px;
+        }
+    </style>
+
+}

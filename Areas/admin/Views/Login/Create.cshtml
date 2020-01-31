@@ -3,10 +3,10 @@
 @model Sys.Models.Member
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "帳號管理列表-新增";
 }
 
-<h2>Create</h2>
+<h2>帳號管理列表-新增</h2>
 
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))  //上傳檔案要改成這個
@@ -14,7 +14,7 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Member</h4>
+    @*<h4>Member</h4>*@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
@@ -90,18 +90,14 @@
         </div>
     </div>
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(model => model.Permission, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.HiddenFor(model => model.Permission)
             <div class="container">
-                <!-- <h1>Dynamic Hierarchical Tree Example</h1> -->
                 <div class="row">
                     <div id="tree"></div>
                 </div>
-                <!-- <div class="row">
-            <button id="btnSave" class="btn btn-primary">Show Checked IDs</button>
-        </div> -->
             </div>
             <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
             <script src="/hierarchical-tree-bootree/dist/bootree.min.js" type="text/javascript"></script>
@@ -111,8 +107,6 @@
                     var tree = $('#tree').tree({
                         primaryKey: 'id',
                         uiLibrary: 'bootstrap',
-                        //dataSource: '/Locations/Get',
-                        // dataSource: [ { id: 12, text: 'foo', children: [ { id: 23, text: 'bar' } ] } ]
                         dataSource: [
                             @Html.Raw(ViewBag.chkPermission)
                         ],
@@ -120,17 +114,26 @@
                     });
                     tree.on('checkboxChange', function (e, $node, record, state) {
                         var checkedIds = tree.getCheckedNodes();
-                        //alert(checkedIds);
                         $('#Permission').val(checkedIds);
-                        //console.log(tree);
-                        //console.log(checkedIds);
                     });
+
+                    var per = [1,3,5];
+
+                    var ul = document.querySelectorAll("ul");
+
+                    per.forEach(item => {
+                        ul[4].getElementsByTagName("li")[item - 1].children[0].childNodes[2].children[0].children[0]
+                            .checked = true;
+                    });
+
                 });
 
             </script>
+            <script type="text/javascript">
 
+            </script>
         </div>
-    </div>
+    </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Permission, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -1,0 +1,209 @@
+﻿@model Sys.Models.Download
+
+<div id="banner-area" class="banner-area" style="background-image:url(/images/banner-bg.jpg)">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>會員專區</li>
+                        <li><a href="#"> 討論區</a></li>
+
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>會員專區</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li class="active"><a href="/Download/Create">討論區</a></li>
+                            <li><a href="/Member/Edit">修改個人資料</a></li>
+                            <li><a href="/Member/LogOff">登出</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories end -->
+
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">討論區</h2>
+                <hr class="botmargin-min">
+                <!-- 內容開始 -->
+
+
+
+                <style>
+                    .entry-header {
+                        background: #3c73b0;
+                        color: white;
+                        padding: 10px 30px;
+                    }
+
+                        .entry-header .entry-title {
+                            color: white;
+                        }
+
+                    .entry-title {
+                    }
+
+                    .post-meta-date {
+                    }
+
+                    .post-content {
+                        border: whitesmoke 1px solid;
+                        margin-bottom: 20px;
+                        box-shadow: rgba(210,210,210,.1) 2px 2px 20px;
+                    }
+
+                    .entry-content {
+                    }
+
+                    .post {
+                        border: whitesmoke 1px solid;
+                        padding: 0;
+                    }
+
+                    .postInfo {
+                        padding: 10px 20px;
+                        background: #eee;
+                        text-align: right;
+                    }
+
+                    .respon {
+                        margin: 20px auto;
+                        display: inline-block;
+                        padding: 3px 8px;
+                        background: #b2b2b2;
+                        color: white;
+                        border-radius: 2px;
+                    }
+
+                    .post-body {
+                        background: #FCFCFC;
+                        padding: 30px;
+                        box-shadow: rgba(210,210,210,.1) 2px 2px 20px;
+                    }
+
+                    .clear {
+                        clear: both;
+                    }
+
+                    .postMan {
+                        font-size: 16px;
+                    }
+                </style>
+                <div class="post-content">
+                    <div class="entry-header">
+                        <h2 class="entry-title">
+                            @Html.DisplayFor(model => model.Item)
+                        </h2>
+                        <span class="postMan"> 發表人:@Html.DisplayFor(model => model.publishUser)</span>
+
+                    </div><!-- header end -->
+                    <div class="postInfo">
+                        <span class="post-meta-date"><i class="fa fa fa-clock-o"></i> @Html.DisplayFor(model => model.publishDate)</span>
+
+
+                    </div>
+                    <div class="post-body">
+                        <div class="entry-content topmargin-min">
+                            @Html.DisplayFor(model => model.Content)
+
+                        </div>
+                        <div class="tags-area clearfix">
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                </div><!-- post-body end -->
+
+                @*<a class="respon" href="/Download/CreateRe/3">回應文章</a>
+                <div class="clear"></div>
+
+                <div class="post">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="entry-header">
+                                <div class="post-media post-image postMan">
+                                    回應:余子廉
+
+                                </div>
+
+                            </div>
+                            <div class="postInfo">
+                                <span class="post-meta-date"><i class="fa fa fa-clock-o"></i> 11/14/2016</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="post-body">
+
+
+                                <p><p>這是老師說的</p>
+                                </p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+
+
+                <div class="paging text-center">
+                    <div class="pagination">
+
+                        <span class="disabled">«</span><span class="current">1</span><span class="disabled">»</span>
+                    </div>
+                </div>
+
+                <div class="post-footer  pull-left">
+                    <a onclick="history.back()" onKeyPress="history.back()" class="btn btn-primary">返回列表</a>
+                </div>
+
+                <!-- Content row 1 end -->
+                <!-- 內容結束 -->
+
+                <div class="tags-area clearfix">
+
+                    <div class="share-items pull-right" style="display: none">
+                        <ul class="post-social-icons unstyled">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- Content Col end -->
+
+
+        </div><!-- Main row end -->
+
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->
+
+

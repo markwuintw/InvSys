@@ -27,7 +27,7 @@ namespace Sys.Models
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")] //HTML 日曆只吃yyyy-MM-dd格式
         [Display(Name = "建立日期")] //顯示的名稱，但在DB及程式碼仍用英文
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? InitDate { get; set; } //資料庫要同步改為非必填
 
 

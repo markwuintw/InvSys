@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using MvcPaging;
+using Newtonsoft.Json;
 using Sys.Filters;
 using Sys.Models;
 
@@ -72,6 +74,7 @@ namespace Sys.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                webArticle.viewers = 0;
                 db.WebArticles.Add(webArticle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -92,6 +95,9 @@ namespace Sys.Areas.admin.Controllers
             {
                 return HttpNotFound();
             }
+
+            webArticle.Content = HttpUtility.HtmlDecode(webArticle.Content);
+
             return View(webArticle);
         }
 
@@ -100,10 +106,33 @@ namespace Sys.Areas.admin.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Article,viewers,publishUser,publishDate,UpdateUser,InitDate")] WebArticle webArticle)
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "Id,Article,viewers,publishUser,publishDate,UpdateUser,InitDate,Content")] WebArticle webArticle)
         {
+            //ModelState.Remove("Id");
+            //ModelState.Remove("Article");
+            //ModelState.Remove("viewers");
+            //ModelState.Remove("publishUser");
+            //ModelState.Remove("publishDate");
+            //ModelState.Remove("UpdateUser");
+            //ModelState.Remove("InitDate");
+            //ModelState.Remove("Content");
+
             if (ModelState.IsValid)
             {
+                //HttpCookie cookie = Request.Cookies["authenticationcookie"];
+                //todo 抓Cookies的使用者名稱
+
+                string str_userData = ((FormsIdentity)(HttpContext.User.Identity)).Ticket.UserData;
+                Member member = JsonConvert.DeserializeObject<Member>(str_userData);
+
+                //HttpCookie cookie = Request.Cookies[".ASPXAUTH"];
+                //Member member = JsonConvert.DeserializeObject<Member>(cookie.Value);
+                webArticle.UpdateUser = member.Name;
+
+                //todo 瀏覽人數
+                //webArticle.viewers = 1; 
+
                 db.Entry(webArticle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

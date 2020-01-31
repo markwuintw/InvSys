@@ -1,17 +1,17 @@
 ﻿@model Sys.Models.WebArticle
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "網站內容管理列表-新增";
 }
 
-<h2>Create</h2>
+<h2>網站內容管理列表-新增</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>WebArticle</h4>
+        @*<h4>WebArticle</h4>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Xml.XPath;
 
 namespace Sys
 {
@@ -13,10 +14,16 @@ namespace Sys
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}"); //只要網址出現任何.axd結尾的網址，不論後面接的所有路徑為何，皆會被視為跳過網址路由的類型
 
+            routes.IgnoreRoute("{*botdetect}", new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "InvAccounts", action = "login", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+
+                namespaces: new string[] { "Sys.Controllers" }
+
+            //https://www.cnblogs.com/xsj1989/p/8676237.html//
 
             //,
             //constraints:new

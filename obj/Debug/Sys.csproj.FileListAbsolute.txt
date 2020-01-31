@@ -116,3 +116,15 @@ C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.creadeAreaAdminWebArticl
 C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.UpdateAreaAdminWebArticle.resources
 C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.UpdateModelInitDate.resources
 C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.UpdateModelInitDate2.resources
+C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.AddOtherDB.resources
+C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.UpdateDbWebArticle.resources
+C:\Users\MARK\source\repos\Sys\bin\CKFinder.dll
+C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.UpdateDbAllBooleanType.resources
+C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.UpdateDbDownloadContent.resources
+C:\Users\MARK\source\repos\Sys\bin\BotDetect.dll
+C:\Users\MARK\source\repos\Sys\bin\BotDetect.Web.Mvc.dll
+C:\Users\MARK\source\repos\Sys\bin\System.Data.SQLite.dll
+C:\Users\MARK\source\repos\Sys\bin\System.Data.SQLite.xml
+C:\Users\MARK\source\repos\Sys\bin\System.Data.SQLite.dll.config
+C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.UpdateDbContact.resources
+C:\Users\MARK\source\repos\Sys\obj\Debug\Sys.Migrations.UpdateDbMember.resources

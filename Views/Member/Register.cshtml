@@ -1,0 +1,488 @@
+﻿@using BotDetect.Web.Mvc
+@model Sys.Models.Member
+
+@using BotDetect.Web.Mvc;
+
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
+
+
+<div id="banner-area" class="banner-area" style="background-image:url(/images/banner-bg.jpg)">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>會員專區</li>
+                        <li><a href="#"> 會員註冊</a></li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <div class="sidebar sidebar-right">
+
+                    <div class="widget">
+                        <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>會員專區</h2>
+                        <ul class="arrow nav nav-tabs nav-stacked">
+                            <li class="active"><a href="#">會員註冊</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories end -->
+
+                </div><!-- Sidebar end -->
+            </div><!-- Sidebar Col end -->
+
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">會員註冊</h2>
+                <hr class="botmargin-min">
+                <!-- 內容開始 -->
+
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", htmlAttributes = new { @class = "form-horizontal" } })) //上傳檔案要改成這個
+                {
+
+                    @*<input name="__RequestVerificationToken" type="hidden" value="70dZeMeZWxw85ZlOOBwi_snMF6GWDt2JO1cX1qDRzOw2C6zwv0O7tLQ2R24o5om20nybHNHXs6nhxCYLhCmZgw6c3IhiGI5fAv3-2nMrUbM1" /> <div class="form-group">
+                            <label class="col-sm-2 control-label">帳　號：</label>
+                            <div class="col-sm-7">
+
+                                <input class="form-control" data-val="true" data-val-length="帳號 長度至少必須為 6 個字元。" data-val-length-max="12" data-val-length-min="6" data-val-required="帳號必填" id="Account" name="Account" placeholder="帳號" type="text" value="" />
+
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="field-validation-valid" data-valmsg-for="Account" data-valmsg-replace="true"></span>
+                                <span></span>
+                            </div>
+                        </div>*@
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">帳號：</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Account, new {htmlAttributes = new {@class = "form-control",placeholder ="帳號"}})
+                            @Html.ValidationMessageFor(model => model.Account, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">密碼：</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control",placeholder ="密碼"}})
+                            @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            <label class="col-sm-2 control-label">確認密碼：</label>
+                            <div class="col-sm-7">
+                                <input class="form-control" data-val="true" data-val-equalto="密碼與確認密碼不相符。" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" placeholder="請輸入確認密碼" type="password" />
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="field-validation-valid" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>*@
+
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">姓名：</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control",placeholder ="請輸入姓名" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">性別：</label>
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.Gender, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">生日：</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
+                            @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.ApplicationType, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">申請類別：</label>
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.ApplicationType, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApplicationType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">連絡電話(公)：</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control",placeholder ="請輸入連絡電話(公)" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.CellPhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">手機：</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CellPhoneNumber, new { htmlAttributes = new { @class = "form-control",placeholder ="請輸入手機" } })
+                            @Html.ValidationMessageFor(model => model.CellPhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">通訊處：</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control",placeholder ="請輸入通訊處" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">E-mail：</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" ,placeholder ="請輸入E-mail"} })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.InternationalMembership, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-sm-2 control-label">國際會籍：</label>
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.InternationalMembership, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.InternationalMembership, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.InternationalMembershipFile, new { htmlAttributes = new { @class = "form-control", Type = "file" } })
+                            <span style="color:red">@ViewBag.Message</span>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.InternationalMembershipFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.InternationalMembershipFile, new { htmlAttributes = new { @class = "form-control", Type = "file" } })
+                            <span style="color:red">@ViewBag.Message</span>
+                            @Html.ValidationMessageFor(model => model.InternationalMembershipFile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+            <div class="form-group">
+                <h4 class="col-sm-2"><i class="fa fa-briefcase"></i> 服務經歷</h4>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.Company, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">現職單位：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Company, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入現職單位" } })
+                        @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.JobTitle, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">職稱：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入職稱" } })
+                        @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.HighEducation, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">最高學歷：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.HighEducation, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入最高學歷" } })
+                        @Html.ValidationMessageFor(model => model.HighEducation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- 服務經歷 -->
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpCom1, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">服務單位：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpCom1, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入服務單位" } })
+                        @Html.ValidationMessageFor(model => model.ExpCom1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpJob1, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">職稱：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpJob1, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入職稱" } })
+                        @Html.ValidationMessageFor(model => model.ExpJob1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpSDY1, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">起：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpSDY1, new { htmlAttributes = new { @class = "form-control", placeholder = "年" } })
+                        @Html.ValidationMessageFor(model => model.ExpSDY1, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ExpSDM1, new { htmlAttributes = new { @class = "form-control", placeholder = "月" } })
+                        @Html.ValidationMessageFor(model => model.ExpSDM1, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.ExpSDM1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExpSDM1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExpSDM1, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpEDY1, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">迄：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpEDY1, new { htmlAttributes = new { @class = "form-control", placeholder = "年" } })
+                        @Html.ValidationMessageFor(model => model.ExpEDY1, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ExpEDM1, new { htmlAttributes = new { @class = "form-control", placeholder = "月" } })
+                        @Html.ValidationMessageFor(model => model.ExpEDM1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.ExpEDM1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExpEDM1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExpEDM1, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                <!-- 服務經歷 end -->
+                <!-- 服務經歷 -->
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpCom2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">服務單位：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpCom2, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入服務單位" } })
+                        @Html.ValidationMessageFor(model => model.ExpCom2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpJob2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">職稱：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpJob2, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入職稱" } })
+                        @Html.ValidationMessageFor(model => model.ExpJob2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpSDY2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">起：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpSDY2, new { htmlAttributes = new { @class = "form-control", placeholder = "年" } })
+                        @Html.ValidationMessageFor(model => model.ExpSDY2, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ExpSDM2, new { htmlAttributes = new { @class = "form-control", placeholder = "月" } })
+                        @Html.ValidationMessageFor(model => model.ExpSDM2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.ExpSDM2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExpSDM2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExpSDM2, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpEDY2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">迄：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpEDY2, new { htmlAttributes = new { @class = "form-control", placeholder = "年" } })
+                        @Html.ValidationMessageFor(model => model.ExpEDY2, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ExpEDM2, new { htmlAttributes = new { @class = "form-control", placeholder = "月" } })
+                        @Html.ValidationMessageFor(model => model.ExpEDM2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.ExpEDM2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExpEDM2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExpEDM2, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                <!-- 服務經歷 end -->
+                <!-- 服務經歷 -->
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpCom3, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">服務單位：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpCom3, new { htmlAttributes = new { @class = "form-control" , placeholder = "請輸入服務單位"} })
+                        @Html.ValidationMessageFor(model => model.ExpCom3, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpJob3, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">職稱：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpJob3, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入職稱" } })
+                        @Html.ValidationMessageFor(model => model.ExpJob3, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpSDY3, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">起：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpSDY3, new { htmlAttributes = new { @class = "form-control", placeholder = "年" } })
+                        @Html.ValidationMessageFor(model => model.ExpSDY3, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ExpSDM3, new { htmlAttributes = new { @class = "form-control", placeholder = "月" } })
+                        @Html.ValidationMessageFor(model => model.ExpSDM3, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.ExpSDM3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExpSDM3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExpSDM3, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ExpEDY3, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="col-sm-2 control-label">迄：</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpEDY3, new { htmlAttributes = new { @class = "form-control", placeholder = "年" } })
+                        @Html.ValidationMessageFor(model => model.ExpEDY3, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ExpEDM3, new { htmlAttributes = new { @class = "form-control", placeholder = "月" } })
+                        @Html.ValidationMessageFor(model => model.ExpEDM3, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.ExpEDM3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ExpEDM3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ExpEDM3, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                <!-- 服務經歷 end -->
+
+            </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TotalJobYear, htmlAttributes: new { @class = "control-label col-md-2"})
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TotalJobYear, new { htmlAttributes = new { @class = "form-control" ,placeholder ="年"} })
+                            @Html.ValidationMessageFor(model => model.TotalJobYear, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TotalJobMonth, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TotalJobMonth, new { htmlAttributes = new { @class = "form-control"  ,placeholder ="月"} })
+                            @Html.ValidationMessageFor(model => model.TotalJobMonth, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">驗證碼：</label>
+                        <div class="col-sm-3">
+                            @{
+                                MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha");
+                                exampleCaptcha.CodeLength = 4;
+                            }
+                            @Html.TextBox("CaptchaCode", null, new
+                            {
+                                placeholder = "請輸入驗證碼",
+                                @class = "form-control"
+                            })
+
+                            @*<input class="form-control" data-val="true" data-val-required="驗證碼必填" id="MvcCaptcha" name="MvcCaptcha" placeholder="請輸入驗證碼" type="text" value="" />*@
+                        </div>
+                        <div class="col-sm-4">
+
+                            @Html.Captcha(exampleCaptcha)
+                            @*@Html.TextBox("CaptchaCode", null, new {placeholder = "請輸入驗證碼"})*@
+
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="field-validation-valid" data-valmsg-for="MvcCaptcha" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="註冊" class="btn btn-default" />                            
+                            <span style="color:red">@ViewBag.AcMessage</span>
+                        </div>
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.ActionLink("Back to List", "Login")
+                        </div>
+
+                    </div>
+
+                }
+
+
+
+                <!-- Content row 1 end -->
+                <!-- 內容結束 -->
+
+                <div class="tags-area clearfix">
+
+                    <div class="share-items pull-right" style="display: none">
+                        <ul class="post-social-icons unstyled">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- Content Col end -->
+
+
+        </div><!-- Main row end -->
+
+    </div><!-- Conatiner end -->
+</section><!-- Main container end -->
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Login")
+</div>
+
